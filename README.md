@@ -1,1 +1,2 @@
-Testing with mocha
+Testing with mocha <br />
+npm test
