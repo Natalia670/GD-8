@@ -7,7 +7,7 @@ describe('Vector Calculator', () => {
             let v1 = new Vector(2, 3);
             let v2 = new Vector(1,1);
             let sum = v1.Sum(v2);
-            let sumShouldBe = 0;
+            let sumShouldBe = (v1.x + v2.x) + " , " + (v1.y + v2.y);
             assert.strictEqual(sum, sumShouldBe);
             assert.ok
         })
@@ -18,7 +18,7 @@ describe('Vector Calculator', () => {
             let v1 = new Vector(2, 3);
             let v2 = new Vector(1,1);
             let sub = v1.Sub(v2);
-            let subShouldBe = 0;
+            let subShouldBe = (v1.x - v2.x) + " , " + (v1.y - v2.y);
             assert.strictEqual(sub, subShouldBe);
             assert.ok
         })
@@ -27,9 +27,9 @@ describe('Vector Calculator', () => {
     describe('Vector scalar', () => {
         it  ('Should do vector SCALAR MULT correctly', () => {
             let v1 = new Vector(2, 3);
-            let v2 = new Vector(1,1);
+            //let v2 = new Vector(1,1);
             let scalar = v1.Scalar(3);
-            let scalarShouldBe = 0;
+            let scalarShouldBe = (v1.x * 3) + " , " + (v1.y * 3);
             assert.strictEqual(scalar, scalarShouldBe);
             assert.ok
         })
@@ -40,7 +40,7 @@ describe('Vector Calculator', () => {
             let v1 = new Vector(2, 3);
             let v2 = new Vector(1,1);
             let dot = v1.Dot(v2);
-            let dotShouldBe = 0;
+            let dotShouldBe = v1.x * v2.x + v1.y * v2.y;
             assert.strictEqual(dot, dotShouldBe);
             assert.ok
         })
@@ -56,18 +56,18 @@ class Vector {
     }
 
     Sum(vector){
-        return 0;
+        return (this.x + vector.x) +" , "+ (this.y + vector.y);
     }
 
     Sub(vector){
-        return 1;
+        return (this.x - vector.x) +" , "+ (this.y - vector.y);
     }
 
     Scalar(num){
-        return 2;
+        return (this.x * num) +" , "+ (this.y * num);
     }
 
-    Dot(Vector){
-        return 3;
+    Dot(vector){
+        return (this.x * vector.x + this.y * vector.y)
     }
 }

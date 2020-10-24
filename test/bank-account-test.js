@@ -65,7 +65,10 @@ class BankAccount {
     }
 
     history(){
-        var hist = []
+        var hist = {
+            hora: String,
+            saldo: Int
+        };
         return hist;
     }
   }
