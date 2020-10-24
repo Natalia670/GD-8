@@ -22,15 +22,19 @@ describe('Bank Account', () => {
 
     describe('Merge', () => {
         it('agrega a original', () => {
-            let bankAcc = new BankAccount(300);
-            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
+            let bankAcc = new BankAccount(300.00);
+            bankAcc.append(100.00)
+            let bankAcc2 = new BankAccount(400.00);
+            bankAcc2.append(200.00)
+            assert.strictEqual(bankAcc.merge(bankAcc2), bankAcc.saldo);
         })
     })
 
     describe('History', () => {
         it('Extraer la cantidad correcta', () => {
-            let bankAcc = new BankAccount(300);
-            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
+            let bankAcc = new BankAccount(300.00);
+            bankAcc.append(100.00)
+            assert.deepStrictEqual(bankAcc.history(), JSON.parse('[{"movimiento":"deposito de: 100"}]'));
         })
     })
 })
@@ -40,6 +44,8 @@ class BankAccount {
         this.saldo = parseFloat(saldo)
     }
 
+    hist = []
+
     current() {
         return parseFloat(this.saldo);
     }
@@ -47,6 +53,7 @@ class BankAccount {
     append(amount){
         if(amount > 0){
             this.saldo = this.current() + amount
+            this.hist.push({movimiento:"deposito de: "+ amount})
             return this.current();
         } else {
             return this.current();
@@ -56,6 +63,7 @@ class BankAccount {
     substract(amount){
         if(amount > 0){
             this.saldo = this.current() - amount
+            this.hist.push({movimiento:"retiro de: "+ amount})
             return this.current();
         } else {
             return this.current();
@@ -63,18 +71,18 @@ class BankAccount {
     }
 
     merge(account){
-        if(account > 0){
-            return 3;
+        if(account.saldo > 0){
+            this.append(account.saldo)
+            this.hist.push(account.history())
+            return this.current();
         }else{
-            return 4;
+            this.substract(account.saldo)
+            this.hist.push(account.history()) 
+            return this.current();
         }
     }
 
     history(){
-        var hist = {
-            hora: String,
-            saldo: Int
-        };
-        return hist;
+        return this.hist;
     }
   }
