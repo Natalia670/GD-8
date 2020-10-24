@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-describe('Tests', () => {
+describe('Bank Account', () => {
     describe('Current', () => {
         it('Saldo actual correcto', () => {
             let bankAcc = new BankAccount(300);
@@ -22,15 +22,15 @@ describe('Tests', () => {
 
     describe('Merge', () => {
         it('agrega a original', () => {
-            let bankAcc = new BankAccount();
-            assert.strictEqual(bankAcc.merge(), bankAcc.saldo);
+            let bankAcc = new BankAccount(300);
+            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
         })
     })
 
     describe('History', () => {
-        it('Historial de Movimientos', () => {
-            let bankAcc = new BankAccount();
-            assert.strictEqual(bankAcc.history(200), bankAcc.saldo);
+        it('Extraer la cantidad correcta', () => {
+            let bankAcc = new BankAccount(300);
+            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
         })
     })
 })
@@ -65,10 +65,7 @@ class BankAccount {
     }
 
     history(){
-        var hist = {
-            hora: String,
-            saldo: Int
-        };
+        var hist = []
         return hist;
     }
   }
