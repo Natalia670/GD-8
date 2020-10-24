@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-describe('Tests', () => {
+describe('Bank Account', () => {
     describe('Current', () => {
         it('Saldo actual correcto', () => {
             let bankAcc = new BankAccount(300);
