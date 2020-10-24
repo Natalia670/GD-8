@@ -19,6 +19,20 @@ describe('Bank Account', () => {
             assert.strictEqual(bankAcc.substract(200.00), bankAcc.saldo);
         })
     })
+
+    describe('Merge', () => {
+        it('agrega a original', () => {
+            let bankAcc = new BankAccount(300);
+            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
+        })
+    })
+
+    describe('History', () => {
+        it('Extraer la cantidad correcta', () => {
+            let bankAcc = new BankAccount(300);
+            assert.strictEqual(bankAcc.substract(200), bankAcc.saldo);
+        })
+    })
 })
 
 class BankAccount {
@@ -46,5 +60,18 @@ class BankAccount {
         } else {
             return this.current();
         }
+    }
+
+    merge(account){
+        if(account > 0){
+            return 3;
+        }else{
+            return 4;
+        }
+    }
+
+    history(){
+        var hist = []
+        return hist;
     }
   }
