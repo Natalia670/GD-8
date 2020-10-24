@@ -1,0 +1,25 @@
+{
+  "name": "gd8",
+  "version": "1.0.0",
+  "description": "Testing with mocha",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natalia670/GD-8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Natalia670/GD-8/issues"
+  },
+  "homepage": "https://github.com/Natalia670/GD-8#readme",
+  "dependencies": {
+    "mocha": "^8.2.0"
+  }
+}
